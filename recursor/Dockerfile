@@ -5,7 +5,8 @@ RUN sed -i -e 's#alpine/v[0-9.]*/#alpine/edge/#g' /etc/apk/repositories \
         tini \
         py2-pip \
         pdns-recursor \
-    && pip install envtpl
+    && pip install envtpl \
+    && rm /var/cache/apk/*
 
 COPY recursor.conf.tpl /etc/pdns/recursor.conf.tpl
 COPY start.sh /

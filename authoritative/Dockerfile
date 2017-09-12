@@ -11,7 +11,8 @@ RUN sed -i -e 's#alpine/v[0-9.]*/#alpine/edge/#g' /etc/apk/repositories \
         pdns-backend-mysql \
         pdns-backend-sqlite3 \
         pdns-backend-pipe \
-    && pip install envtpl
+    && pip install envtpl \
+    && rm /var/cache/apk/*
 
 COPY pdns.conf.tpl /etc/pdns/pdns.conf.tpl
 COPY start.sh /
