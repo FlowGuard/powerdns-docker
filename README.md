@@ -4,17 +4,26 @@ These PowerDNS containers are meant to be simple way to spawn PowerDNS in docker
 Based on alpine, with PowerDNS packages from edge.
 
 All configuration file variables are taken from environment. Authoritative variables are prefixed `PDNS_AUTH`, 
-for recursor the prefix is `PDNS_RECURSOR`.
+for recursor the prefix is `PDNS_RECURSOR`. If any variable with respective name exists, the configuration file
+(pdns.conf or recursor.conf) gets overwritten. If no such variable exists and the file is missing, 
+an empty one is created. To use configuration volume do not set any PDNS_* variables.
 
 ## Authoritative
 Authoritative server contains all backends available in alpine:
 
 * bind
-* gpgsql
+* geoip
 * ldap
-* gmysql
-* gsqlite3
+* lua
+* mariadb
+* mydns
+* mysql
+* odbc
+* pgsql
 * pipe
+* random
+* remote
+* sqlite3
 
 Handling volumes/databases for local backends (like sqlite and bind) is your responsibility.
 
